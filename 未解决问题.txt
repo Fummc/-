@@ -1,0 +1,27 @@
+目前未解决的问题：
+1、textmeshpro 的字体使用addressable 管理的时候，材质贴图未正常加载，现象是，显示的紫色小方块
+2、未跑通hotupdate
+    private string imageRootFolder = "Assets/AddressableAssets/RemoteAssets/Res/Textures/"; // 图片资源根文件夹
+    private string soundRootFolder = "Assets/AddressableAssets/RemoteAssets/Res/Audios/"; // 音效资源根文件夹
+	
+已解决问题：
+QFramework  传统OpenUI 方法，重写了一个异步加载Addressable 中预制体的方法
+Panel 挂载的脚本OnDrag 等方法无法正确识别到Sv内部的拖拽，只有sv 外的拖拽才能识别
+解决方法：重写sv 方法，写一个回调放到sv 内的拖拽监听，在外部的脚本里面注册回调用于原先调用拖拽方法
+
+记录我重新开启一个项目需要的真实时间
+配置表to数据结构 匹配  半天
+ab 转Addressable 管理+（踩坑）  一天半+加班半天
+写资源管理器/事件管理器 /资源验证工具/课程管理/GameManager  一天+加班半天
+主界面编写/音效管理器  一天
+学习界面+二选一界面  半天
+玩界面和预制体制作  半天
+玩模式的脚本书写 一天
+=IF(D5="","",IF(D5>D4,1,IF(AND(F5=1,F4<>1),E4+1,IF(F5=F4,IF(COUNTIF($E$5:F5,F5)<=F5,E4,E4+1),E4))))
+=IF(C6="","",IF(C6>C5,1,IF(AND(E6=1,E5<>1),D5+1,IF(E6=E5,IF(COUNTIF($E$5:E6,E6)<=E6,D5,D5+1),D5))))
+=IF(D3="","",F(D3<>D2,1,IF(E2>=4,E2,E2+1)))
+=IF(F5=1,IF(F4<>1,E4+1,E4),E4)
+
+=IF(D5="","",IF(D5>D4,1,IF(AND(F5=1,F4<>1),E4+1,IF(F5=F4,IF(COUNTIF($E$5:F5,F5)<=F5,E4,E4+1),E4))))  我想根据这个公式改成我对应的表
+=IF(F5=1,E4+1,E4)
+=IF(D5<>D4,1,IF(F5=1, E4+1, E4))
